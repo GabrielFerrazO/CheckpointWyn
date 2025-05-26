@@ -1,60 +1,24 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
+// prisma/schema.prisma
 
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+datasource db {
+  provider = "sqlite" // 🔁 lembre-se: você está usando SQLite agora
+  url      = env("DATABASE_URL")
+}
 
 generator client {
   provider = "prisma-client-js"
 }
 
-datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
-}
-
 model User {
-  id        String    @id @default(uuid())
+  id        String   @id @default(uuid())
   name      String
-  email     String    @unique
+  email     String   @unique
   password  String
   role      Role
-  services  Service[] @relation("UserServices")
-  requests  ServiceRequest[] @relation("ClientRequests")
-  createdAt DateTime  @default(now())
-}
-
-model Service {
-  id          String           @id @default(uuid())
-  title       String
-  description String
-  category    String
-  price       Float
-  provider    User             @relation("UserServices", fields: [providerId], references: [id])
-  providerId  String
-  requests    ServiceRequest[]
-  createdAt   DateTime         @default(now())
-}
-
-model ServiceRequest {
-  id          String   @id @default(uuid())
-  client      User     @relation("ClientRequests", fields: [clientId], references: [id])
-  clientId    String
-  service     Service  @relation(fields: [serviceId], references: [id])
-  serviceId   String
-  message     String
-  status      RequestStatus @default(PENDING)
-  createdAt   DateTime @default(now())
+  createdAt DateTime @default(now()) // ✅ campo adicionado aqui
 }
 
 enum Role {
   CLIENT
   PROVIDER
-}
-
-enum RequestStatus {
-  PENDING
-  ACCEPTED
-  REJECTED
-  COMPLETED
 }
