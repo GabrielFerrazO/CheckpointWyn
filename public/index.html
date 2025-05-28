@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>API WYN - Online</title>
+  <style>
+    body {
+      background-color: #f4f6f8;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 40px 20px;
+      color: #333;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      color: #007bff;
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      margin-top: 24px;
+      color: #444;
+      font-size: 18px;
+    }
+
+    h3 {
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+
+    .grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      margin-top: 32px;
+    }
+
+    .box {
+      flex: 1;
+      min-width: 300px;
+      background: #f9f9f9;
+      border-radius: 8px;
+      padding: 20px;
+    }
+
+    .box pre {
+      background: #f0f0f0;
+      color: #111;
+      padding: 16px;
+      border-radius: 6px;
+      overflow-x: auto;
+      font-size: 14px;
+    }
+
+    a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>✅ <strong>API WYN está funcionando!</strong></h1>
+    <p>Use o Thunder Client ou o Postman para testar os endpoints disponíveis.</p>
+
+    <div class="grid">
+      <!-- Bloco 1: Endpoints -->
+      <div class="box">
+        <h2>📌 Endpoints disponíveis</h2>
+        <h3>GET:</h3>
+        <ul>
+          <li><a href="/api/users" target="_blank">GET /api/users</a></li>
+          <li><a href="/api/services" target="_blank">GET /api/services</a></li>
+          <li><a href="/api/reviews" target="_blank">GET /api/reviews</a></li>
+        </ul>
+
+        <h3>POST:</h3>
+        <ul>
+          <li>POST /api/users</li>
+          <li>POST /api/services</li>
+          <li>POST /api/reviews</li>
+        </ul>
+      </div>
+
+      <!-- Bloco 2: Exemplos -->
+      <div class="box">
+        <h2>📦 Exemplos de requisições</h2>
+
+        <h3>POST /api/users</h3>
+        <pre>{
+  "name": "Gabriel Teste",
+  "email": "gabriel@email.com",
+  "password": "123456",
+  "role": "CLIENT"
+}</pre>
+
+        <h3>POST /api/services</h3>
+        <pre>{
+  "name": "Instalação de tomada",
+  "description": "Preciso instalar uma nova tomada.",
+  "clientId": "COLE_O_ID_DO_CLIENTE",
+  "providerId": "COLE_O_ID_DO_PRESTADOR"
+}</pre>
+
+        <h3>POST /api/reviews</h3>
+        <pre>{
+  "providerId": "COLE_O_ID_DO_PRESTADOR",
+  "clientId": "COLE_O_ID_DO_CLIENTE",
+  "rating": 5,
+  "comment": "Atendimento excelente!"
+}</pre>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,7 +1,8 @@
 // src/controllers/auth.controller.ts
 import { Request, Response } from 'express'
 import prisma from '../config/prisma'
-import bcrypt from 'bcryptjs'
+// src/controllers/auth.controller.ts
+import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import { z } from 'zod'
 

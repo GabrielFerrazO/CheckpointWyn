@@ -1,21 +1,45 @@
-// prisma/schema.prisma
-
-datasource db {
-  provider = "sqlite" // 🔁 lembre-se: você está usando SQLite agora
-  url      = env("DATABASE_URL")
-}
-
 generator client {
   provider = "prisma-client-js"
 }
 
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
 model User {
-  id        String   @id @default(uuid())
-  name      String
-  email     String   @unique
-  password  String
-  role      Role
-  createdAt DateTime @default(now()) // ✅ campo adicionado aqui
+  id         String    @id @default(uuid())
+  name       String
+  email      String    @unique
+  password   String
+  role       Role
+  createdAt  DateTime  @default(now())
+
+  services   Service[] // ← serviços criados por este usuário (se for provider)
+  reviewsAsClient  Review[] @relation("ClientReviews")
+  reviewsAsProvider Review[] @relation("ProviderReviews")
+}
+
+model Service {
+  id          String   @id @default(uuid())
+  name        String
+  description String
+  createdAt   DateTime @default(now())
+
+  providerId  String
+  provider    User     @relation(fields: [providerId], references: [id])
+}
+
+model Review {
+  id         String   @id @default(uuid())
+  providerId String
+  clientId   String
+  rating     Int
+  comment    String?
+  createdAt  DateTime @default(now())
+
+  provider User @relation("ProviderReviews", fields: [providerId], references: [id])
+  client   User @relation("ClientReviews", fields: [clientId], references: [id])
 }
 
 enum Role {

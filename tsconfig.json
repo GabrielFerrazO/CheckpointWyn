@@ -5,15 +5,11 @@
     "rootDir": "./src",
     "outDir": "./dist",
     "esModuleInterop": true,
+    "resolveJsonModule": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
-    "skipLibCheck": true,
-    "resolveJsonModule": true,
-    "typeRoots": [
-      "./node_modules/@types",
-      "./src/types"
-    ]
+    "skipLibCheck": true
   },
   "include": ["src"],
-  "exclude": ["node_modules", "env-test.ts"]
+  "exclude": ["node_modules"]
 }
